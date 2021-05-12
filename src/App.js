@@ -4,12 +4,17 @@ import Header from './components/ui/Header'
 import {useState,useEffect} from 'react'
 import axios from 'axios'
 import CharacteresGrid from './components/ui/characteres/CharacteresGrid'
+import Search from '../src/components/ui/Search'
+
 
 function App() {
+  // define la variable pour stocker l'api
   const [items,setItems]=useState([])
+  // le hook 
   const [isLoding,setIsLoding]=useState(true)
 
   
+  // ce hook sera declancher lors de l'ouverture de la page
 
   useEffect(()=> {
     const fetchItems = async () => {
@@ -34,7 +39,8 @@ function App() {
 
   return (
     <div className="container">
-      <Header />
+      <Header  />
+      <Search />
       <CharacteresGrid isLoding={isLoding} items={items}   />
     </div>
   );
