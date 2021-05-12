@@ -5,7 +5,7 @@ import {useState,useEffect} from 'react'
 import axios from 'axios'
 import CharacteresGrid from './components/ui/characteres/CharacteresGrid'
 import Search from '../src/components/ui/Search'
-import { getSuggestedQuery } from '@testing-library/dom';
+
 
 
 function App() {
