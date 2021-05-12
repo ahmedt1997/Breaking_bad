@@ -6,7 +6,7 @@ const Header = () => {
 
     return (
         <header className='center' >
-            <img src={logo} />
+            <img src={logo} alt='logo of breaking bad' />
         </header>
         
     );
