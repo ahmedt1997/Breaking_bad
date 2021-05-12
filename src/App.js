@@ -5,6 +5,7 @@ import {useState,useEffect} from 'react'
 import axios from 'axios'
 import CharacteresGrid from './components/ui/characteres/CharacteresGrid'
 import Search from '../src/components/ui/Search'
+import { getSuggestedQuery } from '@testing-library/dom';
 
 
 function App() {
@@ -12,6 +13,8 @@ function App() {
   const [items,setItems]=useState([])
   // le hook 
   const [isLoding,setIsLoding]=useState(true)
+
+  const [query,setQuery]=useState('')
 
   
   // ce hook sera declancher lors de l'ouverture de la page
@@ -26,7 +29,7 @@ function App() {
 
         // with axios 
 
-        const res = await axios(`https://www.breakingbadapi.com/api/characters`)
+        const res = await axios(`https://www.breakingbadapi.com/api/characters?name=${query}`)
         console.log(res.data)
 
         setItems(res.data)
@@ -35,12 +38,12 @@ function App() {
 
     }
     fetchItems()
-},[])
+},[query])
 
   return (
     <div className="container">
       <Header  />
-      <Search />
+      <Search getQuery={(q) => setQuery(q)} />
       <CharacteresGrid isLoding={isLoding} items={items}   />
     </div>
   );
